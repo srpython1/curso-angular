@@ -1,22 +1,108 @@
-<h1>Panel de actividades</h1>
-<p>Organiza tus próximas acciones.</p>
+<a class="salto-contenido" href="#contenido">Saltar al contenido</a>
 
-<a href="#actividades">Ver actividades recientes</a>
+<header class="cabecera">
+  <div class="contenedor">
+              <h3>Preparar estructura HTML</h3>
+    <p class="marca">Panel de actividades</p>
+    <nav aria-label="Principal">
+      <ul class="menu">
+        <li><a href="#contenido">Inicio</a></li>
+        <li><a href="#actividades">Actividades</a></li>
+        <li><a href="#nueva">Nueva actividad</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-<h2>Resumen</h2>
-<ul>
-  <li><strong>3</strong> pendientes</li>
-  <li><strong>1</strong> en progreso</li>
-  <li><strong>5</strong> completadas</li>
-</ul>
+<main id="contenido" class="contenedor">
+  <section class="presentacion" aria-labelledby="titulo-presentacion">
+    <div class="presentacion__texto">
+         
+      <h1 id="titulo-presentacion">Organiza tus actividades</h1>
+      <p>Revisa lo importante y prepara tu siguiente acción.</p>
+    </div>
+          <img class="ilustracion" src="assets/panel_ejemplo.svg"
+         alt="Tres columnas que representan las actividades agrupadas por estado"
+         width="300" height="120">
+  </section>
 
-<h2 id="actividades">Actividades recientes</h2>
-<ol>
-  <li>Preparar estructura HTML</li>
-  <li>Revisar el informe trimestral</li>
-</ol>
+  <section aria-labelledby="titulo-resumen">
+    <h2 id="titulo-resumen">Resumen</h2>
+    <ul class="metricas">
+      <li class="metrica"><strong>3</strong> pendientes</li>
+      <li class="metrica"><strong>1</strong> en progreso</li>
+      <li class="metrica"><strong>5</strong> completadas</li>
+    </ul>
+  </section>
+
+  <section id="actividades" aria-labelledby="titulo-actividades">
+    <h2 id="titulo-actividades">Actividades</h2>
+        <form class="filtros">
+      <div class="campo">
+        <label for="buscar">Buscar</label>
+        <input type="search" id="buscar" name="buscar">
+      </div>
+      <div class="campo">
+        <label for="estado">Estado</label>
+        <select id="estado" name="estado">
+          <option value="todas">Todas</option>
+          <option value="pendiente">Pendientes</option>
+          <option value="en-progreso">En progreso</option>
+          <option value="completada">Completadas</option>
+        </select>
+      </div>
+      <button type="button" class="boton">Aplicar filtros</button>
+    </form>
+    <ul class="lista">
+      <li>
+        <article class="tarjeta">
+          <h3>Preparar estructura HTML</h3>
+          <p>Definir las regiones de la página antes de darles estilo.</p>
+          <p class="prioridad prioridad-alta">Prioridad alta</p>
+        </article>
+      </li>
+      <li>
+        <article class="tarjeta">
+          <h3>Revisar contraste</h3>
+          <p>Comprobar que el texto se lee sobre cada fondo.</p>
+          <p class="prioridad prioridad-media">Prioridad media</p>
+        </article>
+      </li>
+      <li>
+        <article class="tarjeta">
+          <h3>Comprobar vista estrecha</h3>
+          <p>Recorrer la página a 320 píxeles sin desbordamiento.</p>
+          <p class="prioridad prioridad-baja">Prioridad baja</p>
+        </article>
+      </li>
+    </ul>
+  </section>
+
+  <section id="nueva" aria-labelledby="titulo-nueva">
+    <h2 id="titulo-nueva">Nueva actividad</h2>
+    <p class="aviso">Los filtros y el guardado todavía no cambian nada: eso llega en el módulo 8.</p>
+        <form class="formulario">
+      <div class="campo">
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" name="titulo">
+      </div>
+      <div class="campo">
+        <label for="prioridad">Prioridad</label>
+        <select id="prioridad" name="prioridad">
+          <option value="alta">Alta</option>
+          <option value="media">Media</option>
+          <option value="baja">Baja</option>
+        </select>
+      </div>
+      <button type="button" class="boton">Guardar borrador</button>
+    </form>
+  </section>
+</main>
+
+<footer class="pie">
+  <div class="contenedor">
+    <p>Práctica local de HTML y CSS.</p>
+  </div>
+</footer>
 
 <router-outlet />
-
-
-

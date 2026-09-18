@@ -1,1 +1,230 @@
-/* You can add global styles to this file, and also import other style files */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0 1rem 3rem;
+  background: #f1f5f9;
+  color: #1f2933;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.contenedor {
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+h1 { font-size: 1.9rem; line-height: 1.2; margin: 0 0 .5rem; }
+h2 { font-size: 1.3rem; margin: 2.5rem 0 1rem; }
+h3 { font-size: 1.05rem; margin: 0 0 .4rem; }
+p  { margin: 0 0 .8rem; }
+
+.cabecera {
+  padding: 1rem 0;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+.marca { font-weight: 700; margin: 0; }
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a,
+.salto-contenido {
+  color: #1d4ed8;
+  text-decoration: none;
+}
+
+.menu a:hover { text-decoration: underline; }
+
+.tarjeta {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.lista,
+.metricas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.metrica {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: .9rem 1rem;
+}
+
+.metrica strong {
+  display: block;
+  font-size: 1.6rem;
+  line-height: 1.1;
+}
+
+.prioridad {
+  display: inline-block;
+  margin: 0;
+  padding: .15rem .6rem;
+  border-radius: 999px;
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+.prioridad-alta  { background: #fee2e2; color: #991b1b; }
+.prioridad-media { background: #fef3c7; color: #92400e; }
+.prioridad-baja  { background: #dcfce7; color: #166534; }
+
+.aviso {
+  background: #e0f2fe;
+  border-left: 4px solid #0369a1;
+  padding: .7rem .9rem;
+  border-radius: 0 6px 6px 0;
+}
+
+.boton {
+  font: inherit;
+  padding: .55rem 1rem;
+  background: #1d4ed8;
+  color: #ffffff;
+  border: 1px solid #1d4ed8;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.boton:hover { background: #1e40af; }
+
+.campo label {
+  display: block;
+  font-size: .9rem;
+  font-weight: 600;
+  margin-bottom: .2rem;
+}
+
+.campo input,
+.campo select {
+  font: inherit;
+  padding: .45rem .6rem;
+  border: 1px solid #94a3b8;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.presentacion__texto { min-width: 0; }
+
+.ilustracion {
+  display: block;
+  border-radius: 8px;
+}
+
+.pie {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid #cbd5e1;
+  color: #52606d;
+}
+.cabecera .contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.presentacion {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metricas {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.lista {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.filtros,
+.formulario {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: end;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 40rem) {
+  .metricas {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.lista {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.lista > li,
+.tarjeta,
+.metrica,
+.campo {
+  min-width: 0;
+}
+
+.tarjeta h3,
+.tarjeta p {
+  overflow-wrap: anywhere;
+}
+
+.campo input,
+.campo select {
+  max-width: 100%;
+}
+.salto-contenido {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: #ffffff;
+  padding: .6rem 1rem;
+  border: 2px solid #1d4ed8;
+  border-radius: 0 0 6px 0;
+  z-index: 10;
+}
+
+.salto-contenido:focus {
+  left: 0;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid #b45309;
+  outline-offset: 2px;
+}
