@@ -1,0 +1,4 @@
+.panel { display: flex; flex-direction: column; gap: 0.75rem; }
+.panel__cabecera { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: baseline; justify-content: space-between; }
+.panel__titulo { margin: 0; font-size: 1.25rem; }
+.panel__cuerpo { min-width: 0; }

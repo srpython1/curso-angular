@@ -1,0 +1,41 @@
+<section class="pagina" aria-labelledby="titulo-pagina">
+  <h2 id="titulo-pagina">Tablero de prioridades</h2>
+
+  @if (seleccionada(); as elegida) {
+    <p class="seleccion">
+      Seleccionada: <strong>{{ elegida.titulo }}</strong> · creada el {{ elegida.creadaEn }}
+    </p>
+  }
+
+  <app-panel-seccion titulo="Resumen">
+    <app-resumen-actividades
+      [total]="total()"
+      [pendientes]="pendientes()"
+      [enProgreso]="enProgreso()"
+      [completadas]="completadas()"
+      [porcentaje]="porcentaje()" />
+  </app-panel-seccion>
+
+  <app-panel-seccion titulo="Buscar y filtrar">
+    <app-filtros-actividades
+      [(termino)]="termino"
+      [(estado)]="filtroEstado"
+      [(prioridad)]="filtroPrioridad" />
+    <p aria-live="polite">{{ mostradas() }} de {{ total() }} actividades visibles</p>
+  </app-panel-seccion>
+
+  <app-panel-seccion titulo="Actividades">
+    <button acciones type="button" (click)="restablecer()">Vaciar el tablero</button>
+
+    <app-lista-actividades
+      [actividades]="visibles()"
+      [seleccionadaId]="seleccionadaId()"
+      [mensajeVacio]="mensajeVacio()"
+      [hayFiltros]="hayFiltros()"
+      (seleccionCambiada)="seleccionar($event)"
+      (destacadoCambiado)="alternarDestacada($event)"
+      (avanceSolicitado)="avanzarEstado($event)"
+      (eliminacionSolicitada)="eliminar($event)"
+      (limpiezaSolicitada)="limpiarFiltros()" />
+  </app-panel-seccion>
+</section>

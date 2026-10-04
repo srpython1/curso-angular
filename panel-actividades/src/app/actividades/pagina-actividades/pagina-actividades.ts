@@ -1,12 +1,17 @@
-import { Component, computed, effect, signal } from '@angular/core';
-import { Actividad, EstadoActividad, FiltroEstado, FiltroPrioridad, Prioridad } from '../modelos/actividad';
+import { Component, computed, signal } from '@angular/core';
+import { Actividad, EstadoActividad, FiltroEstado, FiltroPrioridad, Prioridad } from '../../modelos/actividad';
+import { ResumenActividades } from '../resumen-actividades/resumen-actividades';
+import { FiltrosActividades } from '../filtros-actividades/filtros-actividades';
+import { ListaActividades } from '../lista-actividades/lista-actividades';
+import { PanelSeccion } from '../../compartido/panel-seccion/panel-seccion';
 
 @Component({
-  selector: 'app-tablero-prioridades',
-  templateUrl: './tablero-prioridades.html',
-  styleUrl: './tablero-prioridades.css',
+  selector: 'app-pagina-actividades',
+  imports: [ResumenActividades, FiltrosActividades, ListaActividades, PanelSeccion],
+  templateUrl: './pagina-actividades.html',
+  styleUrl: './pagina-actividades.css',
 })
-export class TableroPrioridades {
+export class PaginaActividades {
   private readonly orden: Record<Prioridad, number> = { alta: 0, media: 1, baja: 2 };
 
   protected readonly actividades = signal<Actividad[]>([
@@ -92,18 +97,6 @@ export class TableroPrioridades {
     this.seleccionadaId.update((actual) => (actual === id ? null : id));
   }
 
-  protected buscar(evento: Event): void {
-    this.termino.set((evento.target as HTMLInputElement).value);
-  }
-
-  protected cambiarFiltroEstado(evento: Event): void {
-    this.filtroEstado.set((evento.target as HTMLSelectElement).value as FiltroEstado);
-  }
-
-  protected cambiarFiltroPrioridad(evento: Event): void {
-    this.filtroPrioridad.set((evento.target as HTMLSelectElement).value as FiltroPrioridad);
-  }
-
   protected limpiarFiltros(): void {
     this.termino.set('');
     this.filtroEstado.set('todas');
@@ -120,11 +113,5 @@ export class TableroPrioridades {
     if (estado === 'pendiente') return 'en_progreso';
     if (estado === 'en_progreso') return 'completada';
     return 'completada';
-  }
-
-  constructor() {
-    effect(() => {
-      console.info(`[Tablero] ${this.mostradas()} de ${this.total()} visibles`);
-    });
   }
 }

@@ -1,17 +1,22 @@
-import { DatePipe, TitleCasePipe } from '@angular/common';
-import { Component } from '@angular/core';
-import type { Actividad } from '../../modelos/actividad';
+import { Component, input, output } from '@angular/core';
+import { Actividad } from '../../modelos/actividad';
+import { TarjetaActividad } from '../tarjeta-actividad/tarjeta-actividad';
 
 @Component({
   selector: 'app-lista-actividades',
-  imports: [DatePipe, TitleCasePipe],
+  imports: [TarjetaActividad],
   templateUrl: './lista-actividades.html',
   styleUrl: './lista-actividades.css',
 })
 export class ListaActividades {
-  protected readonly actividades: Actividad[] = [
-    { id: 1, titulo: 'Preparar estructura HTML', estado: 'completada', prioridad: 'alta', creadaEn: '2026-08-10', destacada: false },
-    { id: 2, titulo: 'Revisar contraste', estado: 'en_progreso', prioridad: 'media', creadaEn: '2026-08-12', destacada: false },
-    { id: 3, titulo: 'Practicar TypeScript', estado: 'pendiente', prioridad: 'alta', creadaEn: '2026-08-14', destacada: false },
-  ];
+  readonly actividades = input.required<Actividad[]>();
+  readonly seleccionadaId = input<number | null>(null);
+  readonly mensajeVacio = input('No hay nada que mostrar.');
+  readonly hayFiltros = input(false);
+
+  readonly seleccionCambiada = output<number>();
+  readonly destacadoCambiado = output<number>();
+  readonly avanceSolicitado = output<number>();
+  readonly eliminacionSolicitada = output<number>();
+  readonly limpiezaSolicitada = output<void>();
 }

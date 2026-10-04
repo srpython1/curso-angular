@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TableroPrioridades } from './tablero-prioridades';
+import { PaginaActividades } from './pagina-actividades';
 
-describe('TableroPrioridades', () => {
-  let component: TableroPrioridades;
-  let fixture: ComponentFixture<TableroPrioridades>;
+describe('PaginaActividades', () => {
+  let component: PaginaActividades;
+  let fixture: ComponentFixture<PaginaActividades>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TableroPrioridades],
+      imports: [PaginaActividades],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TableroPrioridades);
+    fixture = TestBed.createComponent(PaginaActividades);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
@@ -19,4 +19,3 @@ describe('TableroPrioridades', () => {
     expect(component).toBeTruthy();
   });
 });
-

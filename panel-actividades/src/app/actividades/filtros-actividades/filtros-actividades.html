@@ -1,0 +1,30 @@
+<div class="controles">
+  <div class="campo">
+    <label for="busqueda">Buscar por título</label>
+    <input id="busqueda" type="search" [value]="termino()" (input)="escribirTermino($event)">
+  </div>
+
+  <div class="campo">
+    <label for="filtro-estado">Estado</label>
+    <select id="filtro-estado" [value]="estado()" (change)="elegirEstado($event)">
+      <option value="todas">Todos</option>
+      <option value="pendiente">Pendientes</option>
+      <option value="en_progreso">En progreso</option>
+      <option value="completada">Completadas</option>
+    </select>
+  </div>
+
+  <div class="campo">
+    <label for="filtro-prioridad">Prioridad</label>
+    <select id="filtro-prioridad" [value]="prioridad()" (change)="elegirPrioridad($event)">
+      <option value="todas">Todas</option>
+      <option value="alta">Alta</option>
+      <option value="media">Media</option>
+      <option value="baja">Baja</option>
+    </select>
+  </div>
+
+  <button type="button" [disabled]="!hayFiltros()" (click)="limpiar()">
+    Limpiar filtros
+  </button>
+</div>

@@ -13,3 +13,9 @@ export interface Actividad {
 
 export type FiltroEstado = EstadoActividad | 'todas';
 export type FiltroPrioridad = Prioridad | 'todas';
+
+export const ETIQUETAS: Record<EstadoActividad, string> = {
+  pendiente: 'Pendiente',
+  en_progreso: 'En progreso',
+  completada: 'Completada',
+};
