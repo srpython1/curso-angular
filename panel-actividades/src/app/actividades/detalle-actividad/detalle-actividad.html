@@ -8,9 +8,15 @@
         <p>Prioridad {{ a.prioridad }}</p>
         <p>{{ etiquetas[a.estado] }}</p>
         <p>Creada el {{ a.creadaEn }}</p>
-        <button type="button" [attr.aria-label]="'Eliminar ' + a.titulo" (click)="eliminar()">
-          Eliminar
-        </button>
+        @if (a.descripcion) {
+          <p class="descripcion">{{ a.descripcion }}</p>
+        }
+        <div class="acciones">
+          <a [routerLink]="['/actividades', a.id, 'editar']">Editar</a>
+          <button type="button" [attr.aria-label]="'Eliminar ' + a.titulo" (click)="eliminar()">
+            Eliminar
+          </button>
+        </div>
       </article>
     }
   }

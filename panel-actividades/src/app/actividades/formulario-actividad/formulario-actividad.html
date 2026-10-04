@@ -1,0 +1,56 @@
+<form class="formulario" (submit)="$event.preventDefault(); enviar()" novalidate>
+  <h2>{{ titulo() }}</h2>
+
+  @if (errorEnvio()) {
+    <p class="error-envio" role="alert">{{ errorEnvio() }}</p>
+  }
+
+  <div class="campo">
+    <label for="titulo">Título</label>
+    <input
+      id="titulo"
+      type="text"
+      [formField]="f.titulo"
+      [attr.aria-invalid]="erroresTitulo().length > 0"
+      [attr.aria-describedby]="erroresTitulo().length > 0 ? 'errores-titulo' : null"
+    >
+    @if (erroresTitulo().length > 0) {
+      <ul class="errores" id="errores-titulo">
+        @for (mensaje of erroresTitulo(); track mensaje) {
+          <li>{{ mensaje }}</li>
+        }
+      </ul>
+    }
+  </div>
+
+  <div class="campo">
+    <label for="descripcion">Descripción</label>
+    <textarea
+      id="descripcion"
+      rows="3"
+      [formField]="f.descripcion"
+      [attr.aria-describedby]="'ayuda-descripcion'"
+    ></textarea>
+    <p class="ayuda" id="ayuda-descripcion">Te quedan {{ restantes() }} caracteres.</p>
+    @if (erroresDescripcion().length > 0) {
+      <ul class="errores">
+        @for (mensaje of erroresDescripcion(); track mensaje) {
+          <li>{{ mensaje }}</li>
+        }
+      </ul>
+    }
+  </div>
+
+  <fieldset class="campo">
+    <legend>Prioridad</legend>
+    <label><input type="radio" value="baja" [formField]="f.prioridad"> Baja</label>
+    <label><input type="radio" value="media" [formField]="f.prioridad"> Media</label>
+    <label><input type="radio" value="alta" [formField]="f.prioridad"> Alta</label>
+  </fieldset>
+
+  <div class="acciones">
+    <button type="submit">{{ textoBoton() }}</button>
+    <button type="button" [disabled]="!tieneCambios()" (click)="restablecer()">Descartar cambios</button>
+    <a routerLink="/actividades">Cancelar</a>
+  </div>
+</form>

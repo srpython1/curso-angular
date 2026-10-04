@@ -1,5 +1,7 @@
 .detalle { display: flex; flex-direction: column; gap: 0.25rem; margin-top: 1rem; }
 .detalle h2 { margin: 0; overflow-wrap: anywhere; }
 .detalle p { margin: 0; }
+.descripcion { overflow-wrap: anywhere; }
+.acciones { display: flex; gap: 0.75rem; align-items: center; margin-top: 0.5rem; }
 .detalle button { padding: 0.4rem 0.75rem; cursor: pointer; align-self: flex-start; }
 :focus-visible { outline: 2px solid #545454; outline-offset: 2px; }

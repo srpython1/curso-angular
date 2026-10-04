@@ -37,6 +37,7 @@
 
   <app-panel-seccion titulo="Actividades">
     <button acciones type="button" (click)="restablecer()">Vaciar el tablero</button>
+    <a acciones routerLink="/actividades/nueva">Nueva actividad</a>
 
     <app-lista-actividades
       [actividades]="visibles()"
