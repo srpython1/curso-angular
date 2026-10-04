@@ -23,3 +23,7 @@ button:focus-visible {
   outline: 3px solid #b45309;
   outline-offset: 2px;
 }
+
+.menu { list-style: none; margin: 0; padding: 0; display: flex; gap: 1rem; }
+.menu a { color: inherit; }
+.menu a.activo { font-weight: 700; text-decoration: underline; }

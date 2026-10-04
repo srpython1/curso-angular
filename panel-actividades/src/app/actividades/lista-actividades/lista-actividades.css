@@ -2,4 +2,5 @@
 .lista > li { min-width: 0; }
 .vacio { border: 1px dashed #949494; border-radius: 0.5rem; padding: 1.5rem; text-align: center; }
 button { padding: 0.4rem 0.75rem; cursor: pointer; }
-:focus-visible { outline: 2px solid #545454; outline-offset: 2px; } 
+:focus-visible { outline: 2px solid #545454; outline-offset: 2px; }
+.enlace-detalle { font-size: 0.85rem; display: inline-block; margin-top: 0.25rem; }

@@ -1,0 +1,2 @@
+.seccion { display: flex; flex-direction: column; gap: 1rem; }
+.seccion h2 { margin: 0; }

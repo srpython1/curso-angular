@@ -1,0 +1,29 @@
+<a routerLink="/actividades">← Volver a la lista</a>
+
+@switch (resultado().estado) {
+  @case ('encontrada') {
+    @if (actividad(); as a) {
+      <article class="detalle">
+        <h2>{{ a.titulo }}</h2>
+        <p>Prioridad {{ a.prioridad }}</p>
+        <p>{{ etiquetas[a.estado] }}</p>
+        <p>Creada el {{ a.creadaEn }}</p>
+        <button type="button" [attr.aria-label]="'Eliminar ' + a.titulo" (click)="eliminar()">
+          Eliminar
+        </button>
+      </article>
+    }
+  }
+  @case ('ausente') {
+    <div class="detalle">
+      <h2>Esa actividad ya no existe</h2>
+      <p>Puede que se eliminara, o que el enlace sea antiguo.</p>
+    </div>
+  }
+  @case ('invalido') {
+    <div class="detalle">
+      <h2>Esa dirección no es válida</h2>
+      <p>El identificador de una actividad es un número.</p>
+    </div>
+  }
+}

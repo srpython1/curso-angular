@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { PaginaActividades } from './actividades/pagina-actividades/pagina-actividades';
-import { PaginaEstadisticas } from './estadisticas/pagina-estadisticas/pagina-estadisticas';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, PaginaActividades, PaginaEstadisticas],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

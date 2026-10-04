@@ -3,15 +3,18 @@
 <header class="cabecera">
   <div class="contenedor">
     <p class="marca">Panel de actividades</p>
+
+    <nav aria-label="Principal">
+      <ul class="menu">
+        <li><a routerLink="/actividades" routerLinkActive="activo">Actividades</a></li>
+        <li><a routerLink="/estadisticas" routerLinkActive="activo">Estadísticas</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
 <main id="contenido" class="contenedor">
   <h1>Panel de actividades</h1>
 
-  <app-pagina-actividades />
-  <app-pagina-estadisticas />
+  <router-outlet />
 </main>
-
-<router-outlet />
-

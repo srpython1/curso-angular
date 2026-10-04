@@ -1,0 +1,5 @@
+.detalle { display: flex; flex-direction: column; gap: 0.25rem; margin-top: 1rem; }
+.detalle h2 { margin: 0; overflow-wrap: anywhere; }
+.detalle p { margin: 0; }
+.detalle button { padding: 0.4rem 0.75rem; cursor: pointer; align-self: flex-start; }
+:focus-visible { outline: 2px solid #545454; outline-offset: 2px; }

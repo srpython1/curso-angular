@@ -26,9 +26,12 @@
 
   <app-panel-seccion titulo="Buscar y filtrar">
     <app-filtros-actividades
-      [(termino)]="termino"
-      [(estado)]="filtroEstado"
-      [(prioridad)]="filtroPrioridad" />
+      [termino]="termino()"
+      (terminoChange)="cambiarBuscar($event)"
+      [estado]="filtroEstado()"
+      (estadoChange)="cambiarEstado($event)"
+      [prioridad]="filtroPrioridad()"
+      (prioridadChange)="cambiarPrioridad($event)" />
     <p aria-live="polite">{{ mostradas() }} de {{ total() }} actividades visibles</p>
   </app-panel-seccion>
 
