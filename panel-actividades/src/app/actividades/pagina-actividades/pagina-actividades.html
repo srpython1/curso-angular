@@ -1,6 +1,14 @@
 <section class="pagina" aria-labelledby="titulo-pagina">
   <h2 id="titulo-pagina">Tablero de prioridades</h2>
 
+  @if (aviso()) {
+    <p class="aviso" role="status">{{ aviso() }}</p>
+  }
+
+  @if (sinGuardar()) {
+    <p class="aviso" role="status">No se pudo guardar. Tus cambios se perderán al cerrar.</p>
+  }
+
   @if (seleccionada(); as elegida) {
     <p class="seleccion">
       Seleccionada: <strong>{{ elegida.titulo }}</strong> · creada el {{ elegida.creadaEn }}
@@ -39,3 +47,4 @@
       (limpiezaSolicitada)="limpiarFiltros()" />
   </app-panel-seccion>
 </section>
+

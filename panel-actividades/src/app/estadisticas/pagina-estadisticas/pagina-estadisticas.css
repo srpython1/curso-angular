@@ -1,0 +1,4 @@
+.estadisticas { display: flex; flex-direction: column; gap: 0.75rem; }
+.cifras { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 1rem; }
+.cifras li { border: 1px solid #d4d4d4; border-radius: 0.5rem; padding: 0.75rem 1rem; min-width: 0; }
+.cifras strong { display: block; font-size: 1.5rem; }
