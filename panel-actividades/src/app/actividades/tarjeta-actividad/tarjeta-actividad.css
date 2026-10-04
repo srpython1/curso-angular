@@ -1,0 +1,65 @@
+:host { display: block; margin-top: 2rem; }
+
+.actividad-destacada {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-left: 4px solid #94a3b8;
+  border-radius: 8px;
+  padding: 1.2rem;
+}
+
+.actividad-destacada.prioridad-alta { border-left-color: #b91c1c; }
+
+.encabezado-actividad {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1rem;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.estado {
+  padding: .15rem .6rem;
+  border-radius: 999px;
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+.estado-pendiente  { background: #fee2e2; color: #991b1b; }
+.estado-progreso   { background: #fef3c7; color: #92400e; }
+.estado-completada { background: #dcfce7; color: #166534; }
+
+.barra-progreso {
+  height: .6rem;
+  margin: 1rem 0 .3rem;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.barra-progreso span {
+  display: block;
+  height: 100%;
+  background: #1d4ed8;
+}
+
+.porcentaje { margin: 0 0 .8rem; font-size: .9rem; color: #52606d; }
+
+.acciones { display: flex; flex-wrap: wrap; gap: .6rem; }
+
+.acciones button {
+  font: inherit;
+  padding: .5rem .9rem;
+  border: 1px solid #94a3b8;
+  border-radius: 6px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.acciones .accion-principal {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+  color: #ffffff;
+}
+
+.acciones button:disabled { opacity: .55; cursor: not-allowed; }

@@ -1,0 +1,24 @@
+<section aria-labelledby="lista-titulo">
+  <div class="encabezado-seccion">
+    <h2 id="lista-titulo">Actividades recientes</h2>
+    <p>{{ actividades.length }} en la vista</p>
+  </div>
+
+  <ul class="lista">
+    @for (actividad of actividades; track actividad.id; let posicion = $index) {
+      <li>
+        <div>
+          <p class="posicion">Actividad {{ posicion + 1 }}</p>
+          <h3>{{ actividad.titulo }}</h3>
+          <p>Creada el {{ actividad.creadaEn | date: 'd MMM y' }}</p>
+        </div>
+        <span class="prioridad">{{ actividad.prioridad | titlecase }}</span>
+      </li>
+    } @empty {
+      <li class="estado-vacio">
+        <h3>No hay actividades</h3>
+        <p>Crea una actividad cuando estés listo para comenzar.</p>
+      </li>
+    }
+  </ul>
+</section>

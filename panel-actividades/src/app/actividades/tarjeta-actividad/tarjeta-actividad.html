@@ -1,0 +1,52 @@
+<section
+  class="actividad-destacada"
+  [class.prioridad-alta]="prioridad === 'alta'"
+  aria-labelledby="destacada-titulo"
+>
+  <div class="encabezado-actividad">
+    <h2 id="destacada-titulo">{{ titulo }}</h2>
+
+    @switch (estado) {
+      @case ('pendiente') { <span class="estado estado-pendiente">Pendiente</span> }
+      @case ('en_progreso') { <span class="estado estado-progreso">En progreso</span> }
+      @case ('completada') { <span class="estado estado-completada">Completada</span> }
+    }
+  </div>
+
+  <div
+    class="barra-progreso"
+    role="progressbar"
+    aria-label="Progreso de la actividad destacada"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    [attr.aria-valuenow]="porcentaje"
+  >
+    <span [style.width.%]="porcentaje"></span>
+  </div>
+  <p class="porcentaje">{{ porcentaje }}% completado</p>
+
+  @if (detallesVisibles) {
+    <p id="detalle-actividad">{{ descripcion }}</p>
+  } @else {
+    <p id="detalle-actividad">Los detalles están ocultos.</p>
+  }
+
+  <div class="acciones">
+    <button
+      type="button"
+      [attr.aria-expanded]="detallesVisibles"
+      aria-controls="detalle-actividad"
+      (click)="alternarDetalles()"
+    >
+      {{ detallesVisibles ? 'Ocultar detalles' : 'Mostrar detalles' }}
+    </button>
+    <button
+      type="button"
+      class="accion-principal"
+      [disabled]="estado === 'completada'"
+      (click)="avanzarEstado()"
+    >
+      Avanzar estado
+    </button>
+  </div>
+</section>

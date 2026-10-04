@@ -1,0 +1,25 @@
+.contenedor { max-width: 60rem; margin: 0 auto; padding: 0 1rem; }
+
+.cabecera { border-bottom: 1px solid #cbd5e1; padding: 1rem 0; }
+
+.marca { font-weight: 700; margin: 0; }
+
+h1 { font-size: 1.9rem; line-height: 1.2; margin: 2rem 0 1rem; }
+
+.salto-contenido {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: #ffffff;
+  padding: .6rem 1rem;
+  border: 2px solid #1d4ed8;
+  z-index: 10;
+}
+
+.salto-contenido:focus { left: 0; }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #b45309;
+  outline-offset: 2px;
+}
