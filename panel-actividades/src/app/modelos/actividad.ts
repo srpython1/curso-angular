@@ -8,5 +8,8 @@ export interface Actividad {
   estado: EstadoActividad;
   prioridad: Prioridad;
   creadaEn: string;
+  destacada: boolean;
 }
 
+export type FiltroEstado = EstadoActividad | 'todas';
+export type FiltroPrioridad = Prioridad | 'todas';
