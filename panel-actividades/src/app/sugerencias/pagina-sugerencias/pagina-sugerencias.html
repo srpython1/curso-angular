@@ -1,0 +1,21 @@
+<section class="sugerencias" aria-labelledby="titulo-sugerencias">
+  <h2 id="titulo-sugerencias">Sugerencias</h2>
+
+  @if (recurso.isLoading()) {
+    <p class="cargando" role="status">Cargando sugerencias…</p>
+  } @else if (recurso.error()) {
+    <p class="error" role="alert">{{ mensajeError() }}</p>
+    <button type="button" (click)="recurso.reload()">Reintentar</button>
+  } @else if (sugerencias().length === 0) {
+    <p class="vacio">No hay sugerencias por ahora.</p>
+  } @else {
+    <ul class="lista-sugerencias">
+      @for (s of sugerencias(); track s.titulo) {
+        <li>
+          <h3>{{ s.titulo }}</h3>
+          <p>{{ s.motivo }}</p>
+        </li>
+      }
+    </ul>
+  }
+</section>

@@ -1,0 +1,5 @@
+[
+  { "titulo": "Revisar el contraste de los estados", "motivo": "El color no puede ser lo único que distinga pendiente de completada." },
+  { "titulo": "Comprobar la vista a 320 píxeles", "motivo": "Es el ancho más estrecho que hay que soportar." },
+  { "titulo": "Recorrer la aplicación con el teclado", "motivo": "Todo lo que se pulsa tiene que alcanzarse con Tab." }
+]

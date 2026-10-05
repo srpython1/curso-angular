@@ -1,0 +1,6 @@
+.sugerencias { display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+.lista-sugerencias { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
+.lista-sugerencias li { border: 1px solid #d4d4d4; border-radius: 0.5rem; padding: 0.75rem; min-width: 0; }
+.lista-sugerencias h3 { margin: 0 0 0.25rem; font-size: 1rem; }
+.lista-sugerencias p { margin: 0; overflow-wrap: anywhere; }
+.vacio { border: 1px dashed #949494; border-radius: 0.5rem; padding: 1rem; }

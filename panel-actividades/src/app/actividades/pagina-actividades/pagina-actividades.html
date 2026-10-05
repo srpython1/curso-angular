@@ -1,14 +1,6 @@
 <section class="pagina" aria-labelledby="titulo-pagina">
   <h2 id="titulo-pagina">Tablero de prioridades</h2>
 
-  @if (aviso()) {
-    <p class="aviso" role="status">{{ aviso() }}</p>
-  }
-
-  @if (sinGuardar()) {
-    <p class="aviso" role="status">No se pudo guardar. Tus cambios se perderán al cerrar.</p>
-  }
-
   @if (seleccionada(); as elegida) {
     <p class="seleccion">
       Seleccionada: <strong>{{ elegida.titulo }}</strong> · creada el {{ elegida.creadaEn }}
@@ -36,19 +28,28 @@
   </app-panel-seccion>
 
   <app-panel-seccion titulo="Actividades">
-    <button acciones type="button" (click)="restablecer()">Vaciar el tablero</button>
+    <button acciones type="button" (click)="recargar()">Recargar</button>
     <a acciones routerLink="/actividades/nueva">Nueva actividad</a>
 
-    <app-lista-actividades
-      [actividades]="visibles()"
-      [seleccionadaId]="seleccionadaId()"
-      [mensajeVacio]="mensajeVacio()"
-      [hayFiltros]="hayFiltros()"
-      (seleccionCambiada)="seleccionar($event)"
-      (destacadoCambiado)="alternarDestacada($event)"
-      (avanceSolicitado)="avanzarEstado($event)"
-      (eliminacionSolicitada)="eliminar($event)"
-      (limpiezaSolicitada)="limpiarFiltros()" />
+    @if (cargando()) {
+      <p class="cargando" role="status">Cargando actividades…</p>
+    } @else if (errorCarga()) {
+      <p class="error" role="alert">{{ errorCarga() }}</p>
+      <button type="button" (click)="recargar()">Reintentar</button>
+    }
+
+    @if (!cargando() && !errorCarga()) {
+      <app-lista-actividades
+        [actividades]="visibles()"
+        [seleccionadaId]="seleccionadaId()"
+        [mensajeVacio]="mensajeVacio()"
+        [hayFiltros]="hayFiltros()"
+        (seleccionCambiada)="seleccionar($event)"
+        (destacadoCambiado)="alternarDestacada($event)"
+        (avanceSolicitado)="avanzarEstado($event)"
+        (eliminacionSolicitada)="eliminar($event)"
+        (limpiezaSolicitada)="limpiarFiltros()" />
+    }
   </app-panel-seccion>
 </section>
 

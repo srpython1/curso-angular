@@ -1,6 +1,10 @@
+
 import { Component, computed, inject, input, signal } from '@angular/core';
+import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { FiltroEstado, FiltroPrioridad, Prioridad } from '../../modelos/actividad';
+import { debounceTime, of, switchMap } from 'rxjs';
+import { Actividad, FiltroEstado, FiltroPrioridad, Prioridad } from '../../modelos/actividad';
+import { ActividadesApi } from '../../api/actividades-api';
 import { ActividadesService } from '../actividades';
 import { ResumenActividades } from '../resumen-actividades/resumen-actividades';
 import { FiltrosActividades } from '../filtros-actividades/filtros-actividades';
@@ -15,12 +19,16 @@ import { PanelSeccion } from '../../compartido/panel-seccion/panel-seccion';
 })
 export class PaginaActividades {
   private readonly servicio = inject(ActividadesService);
+  private readonly api = inject(ActividadesApi);
   private readonly router = inject(Router);
   private readonly ruta = inject(ActivatedRoute);
 
   private readonly orden: Record<Prioridad, number> = { alta: 0, media: 1, baja: 2 };
 
   protected readonly actividades = this.servicio.actividades;
+
+  protected readonly cargando = this.servicio.cargando;
+  protected readonly errorCarga = this.servicio.error;
 
   readonly buscar = input<string | undefined>('');
   readonly estado = input<FiltroEstado | undefined>('todas');
@@ -37,9 +45,6 @@ export class PaginaActividades {
   protected readonly enProgreso = this.servicio.enProgreso;
   protected readonly completadas = this.servicio.completadas;
   protected readonly porcentaje = this.servicio.porcentaje;
-
-  protected readonly aviso = this.servicio.aviso;
-  protected readonly sinGuardar = this.servicio.sinGuardar;
 
   protected readonly visibles = computed(() => {
     const termino = this.termino().trim().toLocaleLowerCase('es');
@@ -71,6 +76,18 @@ export class PaginaActividades {
   protected readonly seleccionada = computed(
     () => this.actividades().find((a) => a.id === this.seleccionadaId()) ?? null,
   );
+
+  protected readonly resultados = signal<Actividad[] | null>(null);
+
+  constructor() {
+    toObservable(this.termino)
+      .pipe(
+        debounceTime(300),
+        switchMap((t) => (t.trim() === '' ? of(null) : this.api.buscar(t))),
+        takeUntilDestroyed(),
+      )
+      .subscribe((r) => this.resultados.set(r));
+  }
 
   protected alternarDestacada(id: number): void {
     this.servicio.alternarDestacada(id);
@@ -105,10 +122,8 @@ export class PaginaActividades {
     this.actualizar({ buscar: null, estado: null, prioridad: null });
   }
 
-  protected restablecer(): void {
-    this.servicio.vaciar();
-    this.limpiarFiltros();
-    this.seleccionadaId.set(null);
+  protected recargar(): void {
+    this.servicio.cargar();
   }
 
   private actualizar(cambios: Record<string, string | null>): void {
@@ -120,4 +135,3 @@ export class PaginaActividades {
     });
   }
 }
-

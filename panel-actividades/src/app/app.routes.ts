@@ -13,7 +13,6 @@ export const routes: Routes = [
     component: SeccionActividades,
     children: [
       { path: '', component: PaginaActividades, title: 'Actividades' },
-
       {
         path: 'nueva',
         title: 'Nueva actividad',
@@ -23,9 +22,7 @@ export const routes: Routes = [
           ),
         canDeactivate: [puedeSalir],
       },
-
       { path: ':id', component: DetalleActividad, title: 'Detalle de la actividad' },
-
       {
         path: ':id/editar',
         title: 'Editar actividad',
@@ -44,6 +41,15 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./estadisticas/pagina-estadisticas/pagina-estadisticas').then(
         (m) => m.PaginaEstadisticas,
+      ),
+  },
+
+  {
+    path: 'sugerencias',
+    title: 'Sugerencias',
+    loadComponent: () =>
+      import('./sugerencias/pagina-sugerencias/pagina-sugerencias').then(
+        (m) => m.PaginaSugerencias,
       ),
   },
 
